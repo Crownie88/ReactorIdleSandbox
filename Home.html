@@ -1,0 +1,311 @@
+<html>
+<head>
+    <title>Reactor game</title>
+
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+
+    <link href="http://reactoridle.com/css/main.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/research.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/upgrades.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/reactor.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/reactors.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/settings.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/help.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/game.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/purchases.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/tiles.css" type="text/css" rel="stylesheet">
+    <link href="http://reactoridle.com/css/confirmBox.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" href="http://reactoridle.com/favicon.ico">
+
+    <script src="http://reactoridle.com/js/lib/jquery.js" type="text/javascript"></script>
+    <script src="js/customScript.js" type="text/javascript"></script>
+    
+</head>
+	<body oncontextmenu="return false;">
+		<div id="main" class="mainWithAdd">
+			<div id="gameArea">
+				<div class="appContent">
+				<table id="gameOverlayTable" width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tbody>
+						<tr>
+							<td class="overview" valign="top">
+								<div class="overviewBox">
+									<div class="textLine">
+    								<span class="productionTitle">Money:</span>
+							    	<span class="money have" id="money">$0</span>
+							    	<span class="money production" id="income">+0</span>
+									</div>
+
+									<div class="textLine">
+								    <span class="productionTitle">Research:</span>
+								    <span class="research have" id="research">0</span>
+								    <span class="research production" id="researchProduction">+0</span>
+									</div>
+
+									<div class="textLine">
+									  <span class="productionTitle">Power:</span>
+									  <span class="power" id="power">0</span>
+									  <span class="power" id="powerProduction">+0</span> <br>
+									</div>
+
+									<div class="textLine">
+									  <span class="productionTitle">Max power:</span>
+									  <span class="power" id="maxPower">50</span>
+									  <span class="productionTitle">Storage:</span>
+									  <span class="power" id="powerStored">0%</span>
+									</div>
+
+									<div class="powerBarArea">
+									  <div class="bar" id="powerBar" style="width: 0%;"></div>
+									</div>
+								</div>
+							</td>
+							<td class="info" valign="top">
+								<div class="menu">
+									<a href="javascript:void(0)" id="reactorsButton" onclick="ToReactors()">Power plants</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="components" valign="top">Components <br>
+							  <div class="componentButton butwindTurbine" data-id="windTurbine">
+							    <div class="component windTurbine" data-id="windTurbine" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butsolarCell" data-id="solarCell">
+							    <div class="component solarCell" data-id="solarCell" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butcoalBurner" data-id="coalBurner">
+							    <div class="component coalBurner" data-id="coalBurner" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butgasBurner" data-id="gasBurner">
+							    <div class="component gasBurner" data-id="gasBurner" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butnuclearCell" data-id="nuclearCell">
+							    <div class="component nuclearCell" data-id="nuclearCell" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butnuclearCell2" data-id="nuclearCell2">
+							    <div class="component nuclearCell2" data-id="nuclearCell2" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butnuclearCell3" data-id="nuclearCell3">
+							    <div class="component nuclearCell3" data-id="nuclearCell3" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butnuclearCell4" data-id="nuclearCell4">
+							    <div class="component nuclearCell4" data-id="nuclearCell4" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butnuclearCell5" data-id="nuclearCell5">
+							    <div class="component nuclearCell5" data-id="nuclearCell5" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butnuclearCell6" data-id="nuclearCell6">
+							    <div class="component nuclearCell6" data-id="nuclearCell6" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butgenerator" data-id="generator">
+							    <div class="component generator" data-id="generator" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butgenerator2" data-id="generator2">
+							    <div class="component generator2" data-id="generator2" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butgenerator3" data-id="generator3">
+							    <div class="component generator3" data-id="generator3" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butgenerator4" data-id="generator4">
+							    <div class="component generator4" data-id="generator4" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butheatExchanger" data-id="heatExchanger">
+							    <div class="component heatExchanger" data-id="heatExchanger" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butisolation" data-id="isolation">
+							    <div class="component isolation" data-id="isolation" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butheatBattery" data-id="heatBattery">
+							    <div class="component heatBattery" data-id="heatBattery" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butboilerHouse" data-id="boilerHouse">
+							    <div class="component boilerHouse" data-id="boilerHouse" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butbattery" data-id="battery">
+							    <div class="component battery" data-id="battery" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butwaterPump" data-id="waterPump">
+							    <div class="component waterPump" data-id="waterPump" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butgroundwaterPump" data-id="groundwaterPump">
+							    <div class="component groundwaterPump" data-id="groundwaterPump" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butwaterPipe" data-id="waterPipe">
+							    <div class="component waterPipe" data-id="waterPipe" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butoffice" data-id="office">
+							    <div class="component office" data-id="office" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butoffice2" data-id="office2">
+							    <div class="component office2" data-id="office2" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butoffice3" data-id="office3">
+							    <div class="component office3" data-id="office3" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butoffice4" data-id="office4">
+							    <div class="component office4" data-id="office4" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butoffice5" data-id="office5">
+							    <div class="component office5" data-id="office5" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butbank" data-id="bank">
+							    <div class="component bank" data-id="bank" style="opacity: 1;"></div>
+							  </div>
+
+							  <br style="clear:both">
+
+							  <div class="componentButton butresearchCenter" data-id="researchCenter">
+							    <div class="component researchCenter" data-id="researchCenter" style="opacity: 1;"></div>
+							  </div>
+
+							  <div class="componentButton butresearchCenter2" data-id="researchCenter2">
+							    <div class="component researchCenter2" data-id="researchCenter2" style="opacity: 1;"></div>
+							  </div>
+							</td>
+							<td class="reactor">
+								<div class="reactorTable" style="width:550px; height:375px"><div style="width:550px; height:375px; background-color:red"></div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="reactors">
+					<div class="header">You have <span class="money">$<b id="money" class="money"> infinite</b></span> to spend. Isn't that nice.</div>
+					<div class="help">Buy more land to create even bigger power empire. Go ahead, buy some!</div>
+					<div class="selectButtons">
+						<div class="reactorSelect backyard">
+							<div class="description">Island</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="mini" onclick="ShowMap(1)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect village">
+							<div class="description">Village</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="medium" onclick="ShowMap(2)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect region">
+							<div class="description">Region</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="big" onclick="ShowMap(3)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect city">
+							<div class="description">City</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="huge" onclick="ShowMap(4)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect region">
+							<div class="description">Single heat cell</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="challenge1">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="challenge1">0</div>
+							<div class="button selectButton" data-id="challenge1" onclick="ShowMap(5)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect metropolis">
+							<div class="description">Metropolis</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="metropolis" onclick="ShowMap(6)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect city">
+							<div class="description">Mainland</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="mainland" onclick="ShowMap(7)">SELECT</div>
+						</div>
+
+						<div class="reactorSelect backyard">
+							<div class="description">Continent</div>
+							<div class="productionTitle">Income</div>
+							<div class="textLine money" data-id="mini">0</div>
+							<div class="productionTitle">Research</div>
+							<div class="textLine research" data-id="mini">0</div>
+							<div class="button selectButton" data-id="continent" onclick="ShowMap(8)">SELECT</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$( document ).ready(function() {
+    		$('#gameOverlayTable').hide();
+
+    		$('.componentButton').click(function(){
+    			$('.componentButtonSelected').removeClass('componentButtonSelected');
+    			$(this).addClass('componentButtonSelected');
+    		});
+
+    		$('div.tile').click(function(){
+    			alert('whoosh');
+    		});
+
+
+			});
+		</script>
+</body>
+</html>
