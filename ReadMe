@@ -1,1 +1,14 @@
 To download the zip click on it and then press on "RAW". 
+
+To add the other maps:
+Play in chrome, will also work in other browsers but of chrome i'm 100% sure it works like this.
+1. Go to the zone you need.
+2. Go to settings (of reactor idle) and copy your save data to a text file
+3. Sell everything on your map
+4. Press Ctrl+Shift+C for the element selector
+5. Click any cell on the map (I suggest the top left)
+6. Scroll up until you see a div with the class reactorTable
+7. Right click on it and select Copy -> Copy element
+8. Finally press Ctrl+V between the quotes of var S
+9. Go to settings (of reactor idle) and restore your save by pasting the data and pressing "LOAD"
+10. Reload the sandbox when you select the it will show the map.
